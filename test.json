@@ -1,0 +1,15 @@
+{
+  "_id": { "$oid": "668be1150ba07debfbf9a58c" },
+  "name": "admin",
+  "Email": "admin@lecschedule.com",
+  "email": "test@lecschedule.com",
+  "password": "123456",
+  "hash": "$2a$10$IQSw9PF5LH98wtWVJSN7FuTqsfDeuJuOrHukKky5HH6PqxGRTqKUy",
+  "course": "",
+  "lectures": [],
+  "date": "",
+  "courseName": "",
+  "courseLevel": "",
+  "role": "admin",
+  "__v": { "$numberInt": "0" }
+}

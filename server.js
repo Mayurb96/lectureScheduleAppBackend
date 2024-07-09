@@ -7,9 +7,10 @@ const connectDB=require('./Config/db')
 const app = express();
 
 app.use(cors({
-  origin: 'https://lecture-schedulings-app.vercel.app',
+  origin: '*',
   credentials: true  // if you're using cookies or sessions
 }));
+app.options('*', cors());
 
 //app.use(cors());
 app.use(bodyParser.json())

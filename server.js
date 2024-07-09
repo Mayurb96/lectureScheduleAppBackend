@@ -5,21 +5,11 @@ const bodyParser = require('body-parser')
 const connectDB=require('./Config/db')
 
 const app = express();
-const allowedOrigins = ['https://lecture-schedulings-app.vercel.app'];
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+app.use(cors({
+  origin: 'https://lecture-schedulings-app.vercel.app',
+  credentials: true  // if you're using cookies or sessions
+}));
 
 //app.use(cors());
 app.use(bodyParser.json())

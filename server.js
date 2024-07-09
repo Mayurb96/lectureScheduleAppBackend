@@ -7,7 +7,7 @@ const connectDB=require('./Config/db')
 const app = express();
 const allowedOrigins = ['https://lecture-schedulings-app.vercel.app'];
 
-app.use(cors({
+const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
@@ -15,11 +15,13 @@ app.use(cors({
       callback(new Error('Not allowed by CORS'));
     }
   },
-  credentials: true, // if you need to include credentials (cookies, authorization headers, etc.)
-}));
+  credentials: true,
+};
 
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
-app.use(cors());
+//app.use(cors());
 app.use(bodyParser.json())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

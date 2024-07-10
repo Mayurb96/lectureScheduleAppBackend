@@ -12,7 +12,7 @@ const app = express();
 // }));
 // app.options('*', cors());
 app.use(cors({
-  origin: 'https://lecture-schedulings-app.vercel.app/',
+  origin: '*',
   credentials: true,  // if you're using cookies or sessions
   methods: 'GET, POST, PUT, DELETE, OPTIONS',
   allowedHeaders: 'Content-Type, Authorization'

@@ -6,11 +6,21 @@ const connectDB=require('./Config/db')
 
 const app = express();
 
-app.use(cors({
-  origin: '*',
-  credentials: true  // if you're using cookies or sessions
-}));
-app.options('*', cors());
+// app.use(cors({
+//   origin: '*',
+//   credentials: true  // if you're using cookies or sessions
+// }));
+// app.options('*', cors());
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://lecture-schedulings-app.vercel.app');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  next();
+});
 
 //app.use(cors());
 app.use(bodyParser.json())
